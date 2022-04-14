@@ -1,0 +1,217 @@
+html{
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+body{    
+    margin: 0;
+    background-color: white;
+}
+/*---------Navegation and header------*/
+header{
+    margin: 0;
+    justify-content: center;
+}
+
+.menu-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.menu{
+    padding: 1em;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+h1{
+    text-align: center;
+}
+
+/*--------------Primer Container----------*/
+.primer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width:100%;
+    height: 500px;
+    position: relative;
+    background-image: url(./img/img5.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.title{
+    color: white;
+    text-align: center;
+}
+.title h1{
+    font-size: 4em;
+}
+
+/*-------------Segundo Container----------*/
+.segundo-container{
+    display: grid;
+    grid-template-columns: 50% auto auto;
+    grid-template-rows: auto auto;
+    gap: 23px;
+    padding: 5em;
+    padding-left: 7em;
+    padding-right: 7em;
+}
+.primer{
+    display: flex;
+    grid-column: 1/2;
+    grid-row: 1/ span 2;
+   
+}
+.segundo{
+    display: flex;
+    grid-column: 2/3;
+   
+}
+.tercer{
+    display: flex;
+    grid-column: 3/4;
+}
+.cuarto{
+    display: flex;
+    grid-column: 2/4;
+    grid-row: 2/3;
+}
+
+/*--------------Tercer contenedor----------*/
+.tercer-container{
+    background-color: #edeced;
+    justify-content: center;
+
+}
+.product{
+    padding-top: 1em;
+    padding-bottom: 4em;
+    padding-left: 4em;
+    padding-right: 4em;
+    justify-content: center;
+}
+h2{
+    text-align: center;
+    color: #91694E;
+}
+.images-product{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-content: center;
+
+    gap: 10px;
+
+}
+.article{
+    background-color: white;
+    height: auto;
+    width: 230px;
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+    justify-content: center;
+
+}
+article div img{
+    height: 200px;
+    width: 200px;
+    padding: 1em;
+}
+section article div section h2{
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+}
+section article div section p{
+    padding: 0px;
+    font-size: 1em;
+}
+
+/*-------------Cuarto container---------*/
+.cuarto-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.section1{
+    background-image: url(./img/img2.jpg);
+    background-size: cover;
+    background-position: center center;
+    max-width:100%;
+    height: 400px;
+}
+.section2{
+    background-image: url(./img/img4.jpg);
+    background-size: cover;
+    background-position: center center;
+    max-width:100%;
+    height: 400px;
+}
+
+/*-------------Quinto Container---------*/
+.quinto-container{
+    color: white;
+    padding:1em;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 10% 90%;
+    justify-content: center;
+    
+}
+.title-productos{
+    margin: 0px;
+    padding: 1em;
+}
+.container-productos{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-bottom: 3em;
+    gap: 30px;
+}
+.producto{
+    border: rgba(136, 97, 71, 0.478) solid 1px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    color: #886147;
+    
+}
+.image-product{
+    height: 150px;
+    width: 150px;
+}
+
+/*--------------Sexto container-----------*/
+.noticias-container{
+    background-color: #edeced;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 10% 90%;
+    justify-content: center;
+    padding: 1em;
+}
+.new-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 5px;
+}
+.new{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 250px;
+    
+    text-align: center;
+}
+.image-new{
+    height: 200px;
+    width: 200px;
+}
+

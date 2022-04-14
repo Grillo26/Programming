@@ -1,0 +1,185 @@
+body{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+*{
+    font-family: sans-serif;
+}
+.contenedor{
+    width: 100%;
+    margin: auto;
+}
+img{
+    width: 100%;
+}
+.header_contenido{
+    position: relative; /*Encima de todo*/
+    z-index: 100;
+}
+.logo{
+    font-weight: 900; /*Grosor*/
+    font-size: 30px;
+    margin: 10px;
+    font-family: Cambria;
+    color: white;
+}
+
+.banner{
+    height: 50vh; /* ocupe la mitad de la paginas*/
+    margin-top: -70px;
+    position: relative;
+    background:url('./img/banner.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /*Quede pegado*/
+}
+.banner_descripcion{
+    position: absolute;/*Dentro del banner por que esta adentro tiene el relative*/
+    text-align: center;
+    color: white;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%; /*Centrar*/
+    left: 50%; /*Centrar*/
+    width: 100%;
+    font-size: 15px;
+    margin top: 25px;
+}
+.button_banner{
+    background-color: #9cc76b;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 20px;
+}
+.button_banner:hover{
+    border: 2px solid #9cc76b;
+    background: none; /*Desaparecer el fonod*/
+
+}
+.galeria h1{
+    font-size: 40px;
+    text-align: center;
+}
+.galeria{
+    margin: 20px;
+}
+.team h1{
+    font-size: 40px;
+    text-align: center;
+}
+.team{
+    background:#f6f6f6;
+    padding: 30px;
+}
+.team_columna img{
+    border-radius: 50%;
+}
+.team p{
+    text-align: justify;
+}
+.team_grid{
+    display: grid;
+    grid-gap: 30px;
+}
+.info h1{
+    color: #9cc76b;;
+    font-size: 30px;
+}
+.info{
+    text-align: center;
+}
+.info_columna{
+    margin: 20px;
+}
+
+.info .contenedor{
+    display: grid;
+    grid-gap: 10px;
+}
+
+.banner2{
+    height: 50vh; /* ocupe la mitad de la paginas*/
+    color: white;
+    position: relative;
+    background:url('./img/banner1.jpg');
+    background-size: cover;
+    background-position: right;
+    background-attachment: fixed; /*Quede pegado*/
+}
+.banner2 h1{
+    font-size: 28px;
+}
+.banner2_descripcion{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+
+.footer{
+    background-color: #292929;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+@media (min-width:520px){
+    .banner h1{
+        font-size: 30px;
+    }
+    .grid{
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .team .team_grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    banner2 h1{
+        font-size: 50px;
+    }
+    .info .contenedor{
+        grid-template-columns: repeat(3,150px);
+        justify-content: space-around;
+    }
+    .banner2 p{
+        font-size: 25px;
+    }
+}
+
+@media (min-width:728px){
+    .team .team_grid{
+        grid-template-columns: repeat(4,195px);
+    }
+
+}
+
+@media (min-width:1024px){
+    .contenedor{
+        width: 1000px;
+    }
+    .banner{
+        font-size: 45px;
+    }
+
+    .grid{
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)); /*si no alcanza al costado automaticamente baja*/
+        grid-auto-flow: dense; /*Indicar como se vea, tape los agujeros en grid*/
+        grid-auto-rows: 160px;
+    }
+    .big{
+        grid-column: span 2; /*Abarca dos espacios en fila y colums*/
+        grid-row: span 2;
+        
+    }
+    .banner2 p{
+        font-size: 30px;
+    }
+    .team_grid{
+        justify-content: center;
+    }
+    
+}

@@ -1,0 +1,146 @@
+html{
+    font-family: 'Raleway', sans-serif;
+}
+body{
+    margin: 0;
+    background-color: #efefef;
+}
+header{
+    margin: 0px;
+    list-style-type: none; 
+}
+#main{
+   margin-left: 2rem;
+   margin-right: 2rem;
+}
+/*<---------------------Nav------------------->*/
+.menu{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: end;
+    box-shadow: none;
+    cursor: pointer; /*Cambia a manito el mouse*/
+    padding: 1rem;
+}
+a:hover{
+    background-color: rgba(0,0,0, 0.1);
+}
+a{
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+ }
+
+
+
+/*<----------PRIMER CONTAINER--------------->*/
+.container-inicio{
+    display: grid;
+    grid-template-columns: 0.9fr auto;
+    grid-template-rows: auto;
+    gap: 30px;
+    justify-content: center;
+    
+}
+.image-inicio{
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    
+}
+
+.text-inicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    
+}
+
+/*<----------SEGUNDO CONTAINER--------------->*/
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 0.3fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1rem;
+    
+}
+ .servicio{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    transition: box-shadow 0.3s ease; /*Animacón*/
+    background-color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer; /*Cambia a manito el mouse*/
+ }
+ .servicio:hover{
+    box-shadow: 0rem 0.1rem 0.4rem rgba(0,0,0, 0.3); /*Para agregrar sobra */
+
+ }
+ 
+ section h1{
+     text-align: center;
+     font-size: 60px;
+     margin-top: 1rem;
+     margin-bottom: 1rem; 
+ }
+ section img{ 
+     width: 100%;
+     height: auto;
+     
+ }
+ section h2, section p{
+     margin: 1rem ;
+     text-align: center;
+ }
+
+@media screen and (max-width: 900px) {
+    .container-inicio{
+        grid-template-columns: auto;
+    }
+	.container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .menu{
+        grid-template-columns: auto auto auto auto;
+        justify-content: center;
+    }
+    .container-inicio{
+        grid-template-columns: auto;
+    }
+    .image-inicio{
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+
+    }
+
+	.container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .menu{
+
+    }
+    .container-inicio{
+        grid-template-columns: auto;
+        gap: 1px;
+        
+    }
+
+    .container{
+        grid-template-columns: auto;
+    }
+}
