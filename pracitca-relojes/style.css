@@ -1,3 +1,8 @@
+*,
+*::after,
+*::before {
+box-sizing: border-box;}
+
 html{
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
@@ -20,6 +25,11 @@ header{
 }
 .menu{
     padding: 1em;
+    cursor: pointer;
+}
+.menu:hover{
+    background-color: #886147;
+    color: white;
 }
 
 img{
@@ -33,21 +43,34 @@ h1{
 /*--------------Primer Container----------*/
 .primer-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width:100%;
-    height: 500px;
-    position: relative;
     background-image: url(./img/img5.jpg);
     background-size: cover;
     background-position: center center;
+    width: 100%;
 }
 .title{
+    flex-grow: 1;
     color: white;
     text-align: center;
+    background-color: rgba(0, 0, 0, .45);
+    padding-bottom: 3em;
 }
 .title h1{
-    font-size: 4em;
+    font-size: 7vw;
+}
+.title button{
+    background-color: rgb(170, 154, 83);
+    color: rgb(255, 255, 255);
+    font-size: 3wv;
+    border-radius: 1.25rem;
+    border: none;
+    padding: 0.6em;
+    padding-left: 4em;
+    padding-right: 4em;
+}
+.title p{
+    font-size: 3wv;
+    color: #f0e79c;
 }
 
 /*-------------Segundo Container----------*/
@@ -102,14 +125,13 @@ h2{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     justify-content: center;
-
     gap: 10px;
 
 }
 .article{
     background-color: white;
     height: auto;
-    width: 230px;
+    width: 2;
     display: flex;
     flex-flow: wrap column;
     align-items: center;
@@ -215,3 +237,78 @@ section article div section p{
     width: 200px;
 }
 
+@media only screen and (max-width: 875px){
+
+    .segundo-container{
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    /*<---------Tercer container-------->*/
+    
+    .images-product{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        justify-content: center;
+        gap: 10px;
+    }
+    /*<---------Quinto Container-------->*/
+    .container-productos{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-bottom: 3em;
+        gap: 30px;
+    }
+    /*<------------Sexto Container-------->*/
+
+    .new-container{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        
+    }
+    .new{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        width: 250px;
+        padding: 0px;
+        
+        text-align: center;
+    }
+    .image-new{
+        height: 200px;
+        width: 200px;
+    }
+    .title-productos{
+        font-size: 2em;
+        padding: 0.5em;
+    }
+}
+
+@media screen and (max-width:650px){
+    .images-product{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-content: center;
+        gap: 10px;
+    }
+    .cuarto-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    
+}
+@media screen and (max-width: 560px){
+    .container-productos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 3em;
+        gap: 30px;
+    }
+}
+@media screen and (max-width:300px){
+    
+}
