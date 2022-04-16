@@ -1,0 +1,20 @@
+.container{
+    background-color: rgb(42, 42, 54);
+    height: 750px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.items{
+    background-color: white;
+    color: black;
+    border: black 5px solid;
+  
+    width: 15%;
+    height: 100px;
+} 
