@@ -64,7 +64,7 @@ img {
   background-color: #ddd;
   border: medium solid #ccc;
 }
-
+/*<---------------GRID Explicita------------>*/
 .grid-explicit {
   display: grid;
   /* Grid de 3cx3r */
@@ -89,7 +89,7 @@ img {
   gap: 0;
 }
 
-.grid-explicit .item:nth-child(10) {
+.grid-explicit .item:nth-child(10) { /*Para seleccionar el item hijo*/
   color: cyan;
   grid-row-start: 2;
   grid-row-end: 3;
@@ -112,7 +112,7 @@ img {
   grid-row: 1 / span 2;
   grid-column: 1 / span 2;
 }
-
+/*<-------------Para poner nombres a las lineas--------------->*/
 .grid-line-names {
   display: grid;
   /* Grid de 3cx3r */
@@ -129,7 +129,7 @@ img {
   grid-column: linea-c1 / linea-c4;
   /* grid-area: linea-r3 / linea-r4 / linea-c1 / linea-c4; */
 }
-
+/*<----------GRID CON AREAS--------->*/
 .grid-areas {
   display: grid;
   /* Grid de 2cx3r */
@@ -158,6 +158,7 @@ img {
   grid-area: footer;
 }
 
+/*<-----GRID IMPLICITA----->*/
 .grid-implicit {
   width: 40%;
   display: grid;
@@ -167,15 +168,16 @@ img {
   grid-template-rows: repeat(3, 200px);
 }
 
+/*<--------EL FLUJO DE LA GRID---------->*/
 .grid-flow {
   display: grid;
   /* Grid de 5cx3r */
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 150px);
-  grid-auto-flow: row;
+  grid-auto-flow: row; /*Como flex-direction en FlexBox*/
   grid-auto-rows: 100px;
   grid-auto-flow: column;
-  grid-auto-columns: 50px;
+  grid-auto-columns: 50px;/*Tamaño de las celdas que no caben */
 }
 
 .grid-flow-dense {
@@ -183,7 +185,7 @@ img {
   /* Grid de 5cx4r */
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 200px);
-  grid-auto-flow: row dense;
+  grid-auto-flow: row dense; /*Aprovecha el espacio disponible*/
   grid-auto-flow: column dense;
 }
 
@@ -198,6 +200,8 @@ img {
   grid-row: span 3;
   grid-column: span 3;
 }
+
+/*<--------GRID ITEM EN CAPAS (Superposicion)------->*/
 
 .grid-layers {
   display: grid;
@@ -237,6 +241,7 @@ img {
   grid-row: 2 / 4;
 }
 
+/*<--------GRID ORDER--------->*/
 .grid-order {
   display: grid;
   /* Grid de 3cx2r */
@@ -257,28 +262,30 @@ img {
   order: -1;
 }
 
+/*<-------ALINEAMIENTO DE GRID ITEMS---->*/
 .grid-align {
   display: grid;
   /* Grid de 3cx2r */
   grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-rows: repeat(2, 20 0px);
   /* justify-items alinea mis elementos grid en el eje horizontal (X) */
   justify-items: stretch;
   justify-items: start;
   justify-items: end;
   justify-items: center;
-  /* justify-items alinea mis elementos grid en el eje vertical (Y) */
+  /* align-items alinea mis elementos grid en el eje vertical (Y) */
   align-items: stretch;
   align-items: start;
   align-items: end;
   align-items: center;
 }
 
-.grid-align .item:nth-child(4) {
+.grid-align .item:nth-child(4) { /*Alinear hijos separados*/
   justify-self: start;
   align-self: start;
 }
 
+/*<-------ALINEAMIENTO DE GRID TRACKS--------->*/
 .grid-align-tracks {
   display: grid;
   /* Grid de 3cx2r */
@@ -290,32 +297,34 @@ img {
   justify-content: center;
   justify-content: space-between;
   justify-content: space-around;
-  justify-content: space-evenly;
+  justify-content: space-evenly; /*Mismo espacio entre las orillas y el medio*/
   /* align-content alinea los tracks de la grid en el eje vertical (Y) */
   align-content: start;
   align-content: end;
   align-content: center;
   align-content: space-between;
   align-content: space-around;
-  align-content: space-evenly;
+  align-content: space-evenly; 
 }
 
+/*<-------------TAMAÑOS MAXIMOS Y MINIMOS DE GRID TRACKS--------------->*/
 .grid-min-max {
   display: grid;
   /* Grid de 4cx?r */
   grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, minmax(100px, 200px));
-  grid-template-columns: repeat(4, minmax(min-content, 200px));
+  grid-template-columns: repeat(4, minmax(100px, 200px)); /*Tamaño minimos y tamaños maximos del div*/
+  grid-template-columns: repeat(4, minmax(min-content, 200px)); /*min-content: minimo tamaño de lo que tiene dentro*/
   grid-template-columns: repeat(4, minmax(100px, min-content));
   grid-template-columns: repeat(4, minmax(100px, max-content));
   grid-template-columns: repeat(4, minmax(max-content, 200px));
   grid-template-columns: repeat(4, minmax(min-content, max-content));
 }
 
+/*<------------PATRONEs REPETITIVOS-------------->*/
 .grid-repeat {
   display: grid;
   /* Grid de 4cx4r */
-  grid-template-columns: repeat(4, 10% 20% 30% 40%);
+  grid-template-columns: repeat(4, 10% 20% 30% 40%); /*4 columnas, la primera 10% la segunda 20% etc*/
   grid-template-columns: repeat(3, 10% 20% 30% 40%);
   grid-template-columns: repeat(2, 10% 20% 30% 40%);
   grid-template-columns: repeat(1, 10% 20% 30% 40%);
@@ -323,6 +332,7 @@ img {
   grid-auto-rows: 150px;
 }
 
+/*<--------------GRID DINAMICAS-------------------->*/
 .grid-dynamics {
   display: grid;
   /* Grid de 4cx?r */
