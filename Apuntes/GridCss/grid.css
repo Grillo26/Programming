@@ -351,11 +351,14 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+/*<---------------GRID ANIDADOS------------>*/
 .grid-nested {
   display: grid;
   /* Grid de 3cx?r */
   grid-template-columns: repeat(3, 1fr);
 }
+
+/*<--------------SUB GRIDS----------------->*/
 
 .grid {
   display: grid;
