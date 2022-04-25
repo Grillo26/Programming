@@ -15,7 +15,6 @@ header{
 
 .menu-container{
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
@@ -305,6 +304,8 @@ section article div section p{
         gap: 30px;
     }
 }
-@media screen and (max-width:300px){
-    
+@media screen and (max-width:380px){
+    .menu-container{
+        display: none;
+    }
 }
