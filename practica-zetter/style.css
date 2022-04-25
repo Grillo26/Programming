@@ -17,12 +17,12 @@ body{
 nav a{
     text-decoration: none;
     padding: 1em 0.7em;
-    color: black;
-    font-size: 0.9em;
+    color: #a489c2;
+    
 }
 nav a:hover{
-    background-color: black;
-    color: white;
+    background-color: #390179;
+    color: #FFF;
 }
 nav{
     display: flex;
@@ -46,19 +46,25 @@ img{
 .inicio{
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30px;
     margin: 0px;
     
 }
 article button{
-    
     padding: 1em;
     width: 11em;
-    background-color: black;
+    background-color: #CA9EE3;
     color: white;
     border: none;
     border-radius: 0.4em;
 }
-article h2,p{
+article h2{
+    font-size: 3em;
     margin: 0px;
+    color: #a489c2;
+}
+article p{
+    color: #A489C2;
+    font-size: 1.5rem;
 }
