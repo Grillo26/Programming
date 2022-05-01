@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 16px;
+    background-image: radial-gradient(rgba(224,232,255,255), rgba(224,232,255,255));
+
+}
+.main-content{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius:15px;
+    box-shadow: 2px 2px #c6cff6;
+    box-sizing: border-box;
+    max-width:448px;
+    max-height: fit-content;
+}
+header img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.main-content .content .title h1{
+    font-family:'Red Hat Display', sans-serif; 
+    margin-top: 20px;
+    font-weight: 900;
+    color: hsl(223, 47%, 23%);
+}
+.main-content .content .description{
+    max-width: 300px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    color: hsl(224, 23%, 55%);
+}
+section .plan-container{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    padding: 25px 0px 25px 25px;
+    background-color: hsl(225, 100%, 98%);
+    border-radius: 20px;
+}
+section .plan-container .icon img{
+
+}
+section .plan-container .plan{
+  
+}
+.butons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+.payment{
+    width: 25em;
+    background-color: hsl(245, 75%, 52%);
+    border: none;
+    margin-bottom: 20px;
+    color: hsl(225, 100%, 98%);
+    font-weight: bolder;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px 3px rgba(225,222,251,1);
+}
+.cancel{
+    margin: 20px;
+    width: 70%;
+    height: 50px;
+    background-color: white;
+    border: none;
+    color: hsl(224, 23%, 55%);
+    font-weight: bolder;
+}
+
