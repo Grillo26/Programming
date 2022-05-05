@@ -1,0 +1,91 @@
+body{
+    padding:0;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    
+    box-sizing: border-box;
+
+}
+.main-content{
+    background-color: hsl(217, 54%, 11%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*<----CARD----->*/
+.card{
+    background-color: hsl(216, 50%, 16%);
+    width: 75%;
+    height: max-content;
+    padding: 20px;
+    border-radius: 20px;
+}
+.background img{
+    width: 100%;
+    height: auto;
+}
+
+/*<---title---->*/
+.title h1{
+    font-size: 1.3em;
+    color: hsl(0, 0%, 100%);
+}
+/*<---description--->*/
+.description p{
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 28px;
+    color: hsl(215, 51%, 70%);
+}
+
+/*<---date---->*/
+.date{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: hsl(215, 51%, 70%) 2px solid;
+}
+.eth{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.eth img{
+    height: 15px;
+}
+.eth h1{
+    font-size: 0.9em;
+    color: hsl(178, 100%, 50%);
+}
+
+.day{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.day img{
+    height: 20px;
+}
+.day p{
+    font-size: 0.9em;
+    color: hsl(215, 51%, 70%);
+}
+
+/*<----Footer---->*/
+.footer{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding-top: 10px;
+
+}
+.footer img{
+    height: 35px;
+}
+.footer .creation{
+    color:hsl(215, 51%, 70%); ;
+}
+.footer .name{
+    color:hsl(0, 0%, 100%) ;
+}
