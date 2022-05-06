@@ -2,7 +2,6 @@ body{
     padding:0;
     margin: 0;
     font-family: 'Outfit', sans-serif;
-    
     box-sizing: border-box;
 
 }
@@ -17,14 +16,16 @@ body{
 /*<----CARD----->*/
 .card{
     background-color: hsl(216, 50%, 16%);
-    width: 75%;
+    width: 280px;
     height: max-content;
     padding: 20px;
     border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
 }
 .background img{
-    width: 100%;
-    height: auto;
+    width: 281px;
+    height: 281px;
 }
 
 /*<---title---->*/
@@ -33,26 +34,28 @@ body{
     color: hsl(0, 0%, 100%);
 }
 /*<---description--->*/
-.description p{
-    font-size: 1em;
-    font-weight: bold;
-    line-height: 28px;
+.description {
+    font-size: 0.93em;
+    line-height: 27px;
     color: hsl(215, 51%, 70%);
+    margin-bottom: 0px;
 }
 
 /*<---date---->*/
 .date{
     display: flex;
     justify-content: space-between;
-    border-bottom: hsl(215, 51%, 70%) 2px solid;
+    border-bottom: hsl(210, 31%, 30%) solid 1px;
 }
 .eth{
     display: flex;
     gap: 10px;
     align-items: center;
+    
 }
 .eth img{
     height: 15px;
+    margin-right: 5px;
 }
 .eth h1{
     font-size: 0.9em;
@@ -62,10 +65,10 @@ body{
 .day{
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 .day img{
     height: 20px;
+    margin-right:5px;
 }
 .day p{
     font-size: 0.9em;
@@ -75,16 +78,17 @@ body{
 /*<----Footer---->*/
 .footer{
     display: flex;
-    gap: 5px;
     align-items: center;
     padding-top: 10px;
 
 }
 .footer img{
     height: 35px;
+    margin-right: 13px;
 }
 .footer .creation{
-    color:hsl(215, 51%, 70%); ;
+    color:hsl(215, 51%, 70%);
+    margin-right: 7px;
 }
 .footer .name{
     color:hsl(0, 0%, 100%) ;
