@@ -1,85 +1,92 @@
 body{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
     font-family: 'Red Hat Display', sans-serif;
     font-size: 16px;
-    background-image: radial-gradient(rgba(224,232,255,255), rgba(224,232,255,255));
-
+    background-color: hsl(225, 100%, 94%);
 }
 .main-content{
-    width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
-.content{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius:15px;
-    box-shadow: 2px 2px #c6cff6;
+/*<---CARD-->*/
+.card{
+    background-color:white;
+    width: 330px;
+    height: max-content;
+    border-radius: 20px;
     box-sizing: border-box;
-    max-width:448px;
-    max-height: fit-content;
-}
-header img{
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
 }
 
-.main-content .content .title h1{
-    font-family:'Red Hat Display', sans-serif; 
-    margin-top: 20px;
-    font-weight: 900;
-    color: hsl(223, 47%, 23%);
+/*<---IMG HEADER--->*/
+.header-img img{
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 }
-.main-content .content .description{
-    max-width: 300px;
-    margin-top: 10px;
+
+/*<--TTILE AND DESCRIPTION-->*/
+.title-description h1{
+    font-size: 1.3em;
     text-align: center;
-    font-weight: 500;
-    color: hsl(224, 23%, 55%);
+    color:hsl(223, 47%, 23%);
+    font-weight: 850;
 }
-section .plan-container{
-    width: 70%;
+.title-description p{
+    text-align: center;
+    color:hsl(224, 23%, 55%);
+    font-size: 0.9em;
+    padding-right: 3em;
+    padding-left: 3em;
+    line-height: 1.5em;
+}
+/*<--PLAN-->*/
+.plan{
     display: flex;
     justify-content: space-around;
-    align-content: center;
-    padding: 25px 0px 25px 25px;
-    background-color: hsl(225, 100%, 98%);
-    border-radius: 20px;
+    align-items: center;
+    background-color: hsla(222, 18%, 78%, 0.137);
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    height: max-content;
+    border-radius: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
-section .plan-container .icon img{
+.plan-year{
+    margin-left:-25px;
+}
+.plan .plan-year h1{
+    color:hsl(223, 47%, 23%);
+    font-weight: 850;
+    font-size: 0.9em;
+    margin: 0px;
+    margin-bottom: 4px;
+}
+.plan .plan-year p{
+    color:hsl(224, 23%, 55%);
+    font-size: 0.9rem;
+    margin: 0px;
+}
+.plan a{
+    font-size: 0.75rem;
+    
+}
 
-}
-section .plan-container .plan{
-  
-}
-.butons{
+/*<--BUTTONS-->*/
+.buttons{
     display: flex;
+    width: max-content;
     flex-direction: column;
-    margin-top: 15px;
+    justify-content: center;
 }
-.payment{
-    width: 25em;
+.button-payment{
     background-color: hsl(245, 75%, 52%);
     border: none;
-    margin-bottom: 20px;
-    color: hsl(225, 100%, 98%);
-    font-weight: bolder;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px 3px rgba(225,222,251,1);
-}
-.cancel{
-    margin: 20px;
-    width: 70%;
-    height: 50px;
-    background-color: white;
-    border: none;
-    color: hsl(224, 23%, 55%);
-    font-weight: bolder;
-}
+    color: white;
+    padding: 1.3em 5em;
 
+}
