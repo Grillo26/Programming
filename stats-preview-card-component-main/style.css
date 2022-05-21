@@ -1,0 +1,43 @@
+body{
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:hsl(233, 47%, 7%) ;
+    height: 100vh;
+    width: 100%;
+}
+.content{
+    background-color:hsl(244, 38%, 16%);
+    color: hsla(0, 0%, 100%, 0.75);
+    width: 75%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+.textBox{
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+}
+.textBox h2{
+    font-size: 2.3em;
+}
+.textBox h2 span{
+    color:hsl(277, 64%, 61%) ;
+}
+.textBox p{
+    font-size: 0.86rem;
+    line-height: 1.6em;
+    color: hsla(0, 0%, 100%, 0.6);
+}
+.info{
+    display: flex;
+
+}
