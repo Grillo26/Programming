@@ -28,3 +28,5 @@ console.log(noExiste);
 // Recuerda que también en CSS puedes seleccionar etiquetas asi que si quieres seleccionar la navegación podrías tener algo asi:
 const nav = document.querySelector('nav');
 console.log(nav);
+
+// Retorna maximo un elemeno o ningunno
