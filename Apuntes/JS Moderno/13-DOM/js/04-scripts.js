@@ -2,13 +2,10 @@
 //  querySelector va a retornar máximo 1 elemento, si hay múltiples coincidencias solo va a retornar el primero...
 
 const card = document.querySelector('.card'); // QuerySelctor utiliza una sintaxis como de selector de CSS, por lo tanto si deseas seleccionar una clase, debe tener un punto al inicio...
-
 // nota como a pesar de tener múltiples cards, solo selecciona 1
-
 console.log(card);
 
 // al ser una sintaaxis tipo CSS puedes utilizar selectores más especificos...
-
 const info = document.querySelector('.premium .info');
 console.log(info);
 

@@ -21,40 +21,41 @@ function miFuncion() {
     alert('Diste click');
 }
 
-//Crear un CARD
-const parrafo1 = document.createElement('p')
-parrafo1.textContent = 'Concierto';
-parrafo1.classList.add('categoria','concierto');
+// 2do Ejemplo Crear un Card de forma dinámica
+const parrafo1 = document.createElement('P');
+parrafo1.textContent = "Concierto";
+parrafo1.classList.add('categoria', 'concierto');
 
-const parrafo2 = document.createElement('p')
-parrafo2.textContent = 'concierto de Rock';
+const parrafo2 = document.createElement('P');
+parrafo2.textContent = "Concierto 2 titulo";
 parrafo2.classList.add('titulo');
 
-const parrafo3 = document.createElement('p')
-parrafo3.textContent = '$800 por persona';
-parrafo3.classList.add('precio')
+const parrafo3 = document.createElement('P');
+parrafo3.textContent = "$800 por persona";
+parrafo3.classList.add('precio');
+
+
 
 //Crear div con la clase info
 const info = document.createElement('div');
-info.classList.add('info');
+info.classList.add('info')
 info.appendChild(parrafo1);
 info.appendChild(parrafo2);
 info.appendChild(parrafo3);
 
-//Crear la img
-const img = document.createElement('img');
-img.src = 'img/hacer2.jpg';
-img.alt = "Texto Alternativo"
+//Crear la imagen
+const imagen = document.createElement('img');
+imagen.src = 'img/hacer2.jpg';
 
-//Crear el car
+//Crear el card
 const card = document.createElement('div');
 card.classList.add('card');
 
 //Asignar la imagen
-card.appendChild(img);
-//Asignar info
+card.appendChild(imagen);
+//Asignar la info
 card.appendChild(info);
 
-//Insertar en el html
+// ==== INSERTANDO EN EL HTML
 const contenedor = document.querySelector('.hacer .contenedor-cards');
 contenedor.insertBefore(card, contenedor.children[0]);

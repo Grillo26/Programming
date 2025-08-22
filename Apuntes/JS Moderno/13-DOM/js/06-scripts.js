@@ -1,24 +1,19 @@
 
 // Seleccionar elementos del DOM nos va a permitir modificar nuestro HTML y hacerlo más interactivo..
-
 // Veamos por ejemplo como modificar el texto de la parte superior..
-
 // Primero tenemos que seleccionarlo...
 
 const encabezado = document.querySelector('.contenido-hero h1');
-// console.log(encabezado);
+console.log(encabezado);
 
 // Si deseas acceder al texto hay 3 formas de hacerlo...
-console.log(encabezado.innerText); //si en el css visibility: hodde no lo va a ecnontrar 
+console.log(encabezado.innerText); //si en el css visibility: hidden; no lo va a ecnontrar 
 console.log(encabezado.textContent); //Si lo va a encontrar
 console.log(encabezado.innerHTML); //Se trae el html
 
 // Cual es la diferencia entre estas 3... bueno, si le ponemos a ese elemento visibility: hidden; en el CSS, 
-
 // Puedes ver que innerText no puede acceder a ese contenido...
-
 // Ahora, si añadimos algo de HTML, 
-
 // TextContent va a ignorar esas etiquetas HTML y traer solo el texto, mientras que innerhTML si se trae el HTML..
 
 // ahora también puedes tener algo de encadenamiento o chaining...
@@ -30,7 +25,6 @@ console.log(textoEncabezado);
 document.querySelector('.contenido-hero h1').textContent = 'Nuevo Heading'
 
 // otra opción seria con una variable.
-
 const nuevoTexto = 'Nuevo Heading';
 document.querySelector('.contenido-hero h1').textContent = nuevoTexto;
 
