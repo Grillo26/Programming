@@ -1,23 +1,25 @@
 
+const nav = document.querySelector('.navegacion');
 
-const nav = document.querySelector(' .navegacion');
-
-//Registrar un evento
-nav.addEventListener('click', () =>{
-    console.log('click en nav');
-})
+//registrar evento
 nav.addEventListener('mouseout', () =>{
-    console.log('Saliendo en la navegacion');
-    nav.style.backgroundColor = 'transparent';
+    console.log('Saliendo de la navegación');
+    nav.style.backgroundColor = "transparent";
 })
-nav.addEventListener('mouseenter', () =>{
-    console.log('entrando a la nav');
-    nav.style.backgroundColor = 'white';
 
+nav.addEventListener('mouseenter', () => {
+    console.log('Entrando a la navegación');
+    nav.style.backgroundColor = "red";
+})
+
+nav.addEventListener('click', () =>{
+    console.log('haciendo click kkk');
+    nav.style.backgroundColor = "green";
 })
 
 // otros eventos abarcan...
 
+// mouseenter - cuando se pasa por encima
 // mousedown - // cuando presionamos
 // click - similar, de hecho es probablemente el más utilizado..
 // dbclick - doble click como cuando quieres abrir un archivo
