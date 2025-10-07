@@ -19,6 +19,12 @@ function cargarEventListeners(){
         articulosCarrito = [];
         limpiarHTML(); //Eliminamos todo el HTML
     });
+
+    //Muestra los cursos del Local Storage
+    document.addEventListener('DOMContentLoaded', () =>{
+        articulosCarrito = JSON.parse( localStorage.getItem('carrito') || []);
+        carritoHTML();
+    })
 }
 
 
@@ -92,6 +98,14 @@ function carritoHTML(){
         //AGrega el HTML en el carrito de tbody
         contenedorCarrito.appendChild(row);
     });
+
+    //Agregar el carrito de cmpras al Storage
+    sincronizarStorage();
+
+}
+
+function sincronizarStorage(){
+    localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
 //Elimina los cursos del tbody
