@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas Profesional</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased">
+
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 sm:p-8 border-b dark:border-gray-700">
+                <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center">
+                    Mi Agenda
+                </h1>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 text-center">
+                    Organiza tu día de forma inteligente.
+                </p>
+            </div>
+
+            <div class="p-6 sm:p-8">
+
+                <form id="task-form" class="flex items-center space-x-2 mb-8">
+                    <input type="text" id="task-input" placeholder="Escribe una nueva tarea..." class="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors dark:bg-gray-700 dark:text-gray-200 placeholder-gray-400">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors
+                                focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Agregar
+                    </button>
+                </form>
+
+                <div class="flex justify-between items-center mb-6 text-gray-600 dark:text-gray-400">
+                    <span id="pending-tasks-count" class="text-sm font-semibold">
+                        0 tareas pendientes
+                    </span>
+                    <div class="flex space-x-2">
+                        <button class="filter-btn text-sm font-medium p-2 rounded-lg transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 active-filter" data-filter="all">Todas</button>
+                        <button class="filter-btn text-sm font-medium p-2 rounded-lg transition-colors hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="pending">Pendientes</button>
+                        <button class="filter-btn text-sm font-medium p-2 rounded-lg transition-colors hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="completed">Completadas</button>
+                    </div>
+                </div>
+
+                <ul id="task-list" class="space-y-4">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

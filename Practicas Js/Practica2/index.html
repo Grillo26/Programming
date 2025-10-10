@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Citas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen flex items-center justify-center">
+
+    <div class="max-w-xl mx-auto p-8 text-center space-y-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Generador de Citas Aleatorias</h1>
+
+        <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg border border-gray-200">
+            <div id="quote-container" class="space-y-4">
+
+            </div>
+            <button id="new-quote-btn" class="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                Nueva Cita
+            </button>
+        </div>
+
+        <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg border border-gray-200 mt-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Agrega tu propia cita</h2>
+            <form id="add-quote-form" class="space-y-4 text-left">
+                <div>
+                    <label for="new-quote-text" class="block text-sm font-medium text-gray-700">Cita:</label>
+                    <textarea id="new-quote-text" name="cita" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+                <div>
+                    <label for="new-quote-author" class="block text-sm font-medium text-gray-700">Autor:</label>
+                    <input type="text" id="new-quote-author" class="mt-1 p-4 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                    Agregar Cita
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Recetas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuración mínima de Tailwind para el tema
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', // Indigo vibrante para acentos
+                        'surface': '#1f2937', // Gris oscuro para tarjetas/fondos
+                        'background': '#111827', // Fondo principal muy oscuro
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-gray-100 min-h-screen antialiased">
+
+    <header class="bg-surface shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white hover:text-primary transition-colors">
+                FoodFinder 🍽
+            </a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#" class="hover:text-primary transition-colors">Inicio</a>
+                <a href="#" class="hover:text-primary transition-colors">Acerca</a>
+            </div>
+            <button class="md:hidden p-2 rounded-md hover:bg-gray-700 transition-colors">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <section class="bg-primary py-16 md:py-24 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4">
+                ¿Qué cocinarás hoy?
+            </h1>
+            <p class="text-xl text-indigo-200">
+                Busca recetas con lo que ya tienes en tu despensa.
+            </p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-12">
+
+        <section id="filter-section" class="bg-surface p-6 sm:p-8 rounded-xl shadow-2xl mb-12">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center">Tus Ingredientes Disponibles</h2>
+            <div class="w-full">
+                <div class="sm:hidden">
+                    <label for="tabs-mobile" class="sr-only">Seleccionar Pestaña</label>
+                    <select id="tabs-mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="profile-content">Profile</option>
+                            <option value="dashboard-content">Dashboard</option>
+                            <option value="settings-content">Settings</option>
+                            <option value="invoice-content">Invoice</option>
+                     </select>
+                </div>
+
+                <ul id="tabs-desktop" class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow-sm sm:flex dark:divide-gray-700 dark:text-gray-400" role="tablist">
+                    <!--- AQUI SE INYECTA DESDE LA BASE DE DATOS LAS CATEGORIAS -->
+
+                </ul>
+
+                <div id="tabs-content" class="mt-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800">
+                    <!-- AQUI SE INTECTARÁ LOS FILTROS DE LOS INGREDIENTES -->
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-white mb-8">Recetas Encontradas</h2>
+            <div id="recetas-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface mt-12 py-6 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2025 FoodFinder. Proyecto de práctica JavaScript.</p>
+        </div>
+    </footer>
+
+</body>
+<script src="script.js"></script>
+<script src="recetas.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const desktopTabs = document.getElementById('tabs-desktop');
+        const mobileSelect = document.getElementById('tabs-mobile');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        // Función central para cambiar la pestaña
+        function switchTab(targetId) {
+            // 1. Ocultar todos los paneles de contenido
+            tabPanes.forEach(pane => {
+                pane.classList.add('hidden');
+                pane.classList.remove('active-pane');
+            });
+
+            // 2. Mostrar el panel de contenido objetivo
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) {
+                targetPane.classList.remove('hidden');
+                targetPane.classList.add('active-pane');
+            }
+
+            // 3. Actualizar el estilo activo en los enlaces de escritorio
+            // Quitamos el estilo activo a todos los enlaces
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.classList.remove('active-tab', 'bg-gray-700', 'text-white', 'dark:bg-gray-700');
+                link.classList.add('bg-white', 'dark:bg-gray-800', 'dark:text-gray-400');
+            });
+
+            // Aplicamos el estilo activo al enlace correspondiente
+            const activeLink = document.querySelector(`.tab-link[data-target="${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active-tab', 'bg-gray-700', 'text-white', 'dark:bg-gray-700');
+                activeLink.classList.remove('bg-white', 'dark:bg-gray-800', 'dark:text-gray-400');
+            }
+        }
+
+        // --- Lógica para Desktop (clics en los enlaces <a>) ---
+        desktopTabs.addEventListener('click', (e) => {
+            e.preventDefault(); // Previene la navegación
+            const link = e.target.closest('.tab-link');
+
+            if (link) {
+                const targetId = link.dataset.target;
+                switchTab(targetId);
+
+                // Sincroniza la selección móvil
+                mobileSelect.value = targetId;
+            }
+        });
+
+        // --- Lógica para Mobile (cambio en el <select>) ---
+        mobileSelect.addEventListener('change', (e) => {
+            const targetId = e.target.value;
+            switchTab(targetId);
+        });
+
+        // Inicialización: Asegura que el estado inicial sea consistente
+        switchTab('proteinas-content');
+    });
+</script>
+
+</html>

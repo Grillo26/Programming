@@ -1,0 +1,39 @@
+/* --- Estilos para las Pestañas (TABS) en Modo Dark --- */
+
+
+/* Estilo Base del Botón de Pestaña */
+
+.tab-btn {
+    /* text-gray-400 es más visible en fondos oscuros, border-gray-700 para el borde sutil */
+    @apply px-4 py-2 text-gray-400 border-b-2 border-transparent hover: text-white hover: border-blue-500 transition-colors duration-300;
+}
+
+
+/* Estilo para la Pestaña Activa */
+
+.active-tab-dark {
+    /* El color azul claro o primario se usa para destacar en modo dark */
+    @apply text-blue-400 border-b-2 border-blue-400 font-bold;
+}
+
+
+/* Estilo del Contenido Activo/Oculto */
+
+.active-pane-dark {
+    @apply block transition-opacity duration-300;
+}
+
+.tab-pane {
+    /* Si la pestaña no está activa, por defecto estará oculta (manejo en JS) */
+    @apply transition-opacity duration-300;
+}
+
+
+/* Estilo para el Ingrediente Seleccionado (para activar con JS) */
+
+
+/* Usa un color de acento para mostrar que está seleccionado */
+
+.ingrediente-btn.selected {
+    @apply bg-blue-600 text-white font-semibold shadow-lg border-blue-500;
+}
