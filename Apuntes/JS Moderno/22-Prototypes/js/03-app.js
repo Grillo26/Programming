@@ -14,14 +14,13 @@ Cliente.prototype.tipoCliente = function (){
 
     return tipo;
 }
-
 Cliente.prototype.nombreClieneSaldo = function(){
     return `Nombre: ${this.nombre}, Saldo: ${this.saldo}, Tipo de Cliente: ${this.tipoCliente()}`;
 }
-
 Cliente.prototype.retiraSaldo = function(retira){
     this.saldo -= retira;
 }
+
 //Instanciarlo
 const pedro = new Cliente('Pedro', 6000);
 console.log(pedro.tipoCliente());
