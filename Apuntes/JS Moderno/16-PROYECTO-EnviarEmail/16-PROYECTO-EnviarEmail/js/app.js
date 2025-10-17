@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo el HTML
-
-    const email = {
+document.addEventListener('DOMContentLoaded', function(){ //Cuando carga todo el HTML
+    
+    const email ={
         email: '',
         asunto: '',
         mensaje: ''
     }
-
+    
 
     //Seleccionar los elementos de la interfaz
     const inputEmail = document.querySelector('#email');
@@ -15,22 +15,22 @@ document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo e
     const btnSubmit = document.querySelector('#formulario button[type="submit"]');
     const btnReset = document.querySelector('#formulario button[type="reset"]');
     const spiner = document.querySelector('#spiner');
-
+    
     //Asignar Eventos
     inputEmail.addEventListener('input', validar);
     inputAsunto.addEventListener('input', validar);
     inputMensaje.addEventListener('input', validar);
 
-    formulario.addEventListener('submit', enviarEmail);
+    formulario.addEventListener('submit',enviarEmail);
 
-    btnReset.addEventListener('click', function(e) {
+    btnReset.addEventListener('click', function(e){
         e.preventDefault(); //Detiene a accion por defecto
 
         //Reinicar el objeto
         resetFormulario();
     });
 
-    function enviarEmail(e) {
+    function enviarEmail(e){
         e.preventDefault();
         console.log('enviando');
         spiner.classList.add('flex');
@@ -55,18 +55,18 @@ document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo e
         }, 3000);
     }
 
-    function validar(e) {
-        if (e.target.value.trim() === '') { //Se recomienda trim() para los espacios en blanco
+    function validar(e){
+        if(e.target.value.trim() ===''){ //Se recomienda trim() para los espacios en blanco
             mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
             email[e.target.name] = '';
             comprobarEmail();
             return; //Detiene la ejcuccion del código
         }
-
+        
         //Llama a método para verificar email
-        if (e.target.id === 'email' && !validarEmail(e.target.value)) {
+        if(e.target.id === 'email' && !validarEmail(e.target.value)){
             mostrarAlerta('El email no es válido', e.target.parentElement);
-            email[e.target.name] = '';
+            email[e.target.name];
             comprobarEmail();
             return;
         }
@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo e
 
         //Asginar los valores
         email[e.target.name] = e.target.value.trim().toLowerCase();
-
+        
         //comprobar el objeto email
         comprobarEmail();
     }
 
-    function mostrarAlerta(mensaje, referencia) {
+    function mostrarAlerta(mensaje, referencia){
         limpiarAlerta(referencia);
 
         //Generar una alerta en HTML
@@ -88,29 +88,27 @@ document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo e
         error.classList.add('bg-red-600', 'text-white', 'p-2', 'text-center');
 
         //Inyectar el error al formulario
-        referencia.appendChild(error);
+        referencia.appendChild(error); 
         // formulario.innerHTML = error.innerHTML;
     }
-
-    function limpiarAlerta(referencia) {
-        //Comprueba si ya exite una alerta
+    function limpiarAlerta(referencia){
+                //Comprueba si ya exite una alerta
 
         const alerta = referencia.querySelector('.bg-red-600');
-        if (alerta) {
+        if(alerta){
             alerta.remove();
         }
 
     }
 
-    function validarEmail(email) {
+    function validarEmail(email){
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         const resultado = regex.test(email);
         return resultado;
 
     }
-
-    function comprobarEmail() {
-        if (Object.values(email).includes('')) {
+    function comprobarEmail(){
+        if(Object.values(email).includes('') ){
             btnSubmit.classList.add('opacity-50');
             btnSubmit.disabled = true;
             return;
@@ -119,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() { //Cuando carga todo e
         btnSubmit.disabled = false;
     }
 
-    function resetFormulario() {
+    function resetFormulario(){
         //Reinicar el objeto
         email.email = '';
         email.asunto = '';

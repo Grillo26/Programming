@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Librería | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuración para el modo oscuro/claro (Dark/Light mode)
+        tailwind.config = {
+            darkMode: 'class', // Usa la clase 'dark' en el <html>
+        }
+
+        // Función JavaScript para alternar el modo oscuro
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+    <div class="min-h-screen flex">
+
+        <aside class="w-64 bg-white dark:bg-gray-800 shadow-xl border-r border-gray-200 dark:border-gray-700 p-6 flex flex-col justify-between">
+            <div>
+                <h1 class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-8">
+                    Librería
+                </h1>
+                <nav>
+                    <a href="#" class="block py-2.5 px-4 rounded-lg bg-indigo-50 dark:bg-gray-700 text-indigo-700 dark:text-indigo-400 font-semibold mb-2 transition duration-200">
+                        📚 Inventario
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                        📊 Reportes
+                    </a>
+                </nav>
+            </div>
+
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <button onclick="toggleDarkMode()" class="w-full py-2.5 px-4 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-200 flex items-center justify-center font-medium">
+                    <span class="mr-2">☀️</span> / <span class="ml-2">🌙</span> Modo
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-8">
+            <header class="mb-10 flex justify-between items-center">
+                <h2 class="text-3xl font-bold">Gestión de Inventario</h2>
+                <div class="bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg">
+                    Valor Total del Inventario:
+                    <span id="valor-total" class="font-extrabold text-indigo-600 dark:text-indigo-400 text-2xl ml-2">
+                        $0.00
+                    </span>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-2xl h-fit">
+                    <h3 class="text-xl font-semibold mb-6">Registrar Nuevo Libro</h3>
+                    <form id="formulario-libro" class="space-y-4">
+
+                        <input type="hidden" id="libro-id" value="">
+
+                        <div>
+                            <label for="titulo" class="block text-sm font-medium mb-1">Título:</label>
+                            <input type="text" id="titulo" name="titulo" placeholder="Cien años de soledad" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                        </div>
+
+                        <div>
+                            <label for="autor" class="block text-sm font-medium mb-1">Autor:</label>
+                            <input type="text" id="autor" name="autor" placeholder="Gabriel García Márquez" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="isbn" class="block text-sm font-medium mb-1">ISBN:</label>
+                                <input type="text" id="isbn" name="isbn" placeholder="978-0307455295" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                            </div>
+                            <div>
+                                <label for="precio" class="block text-sm font-medium mb-1">Precio ($):</label>
+                                <input type="number" id="precio" name="precio" placeholder="25.50" step="0.01" min="0" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="stock" class="block text-sm font-medium mb-1">Stock (Cantidad):</label>
+                            <input type="number" id="stock" name="stock" placeholder="10" min="1" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                        </div>
+
+                        <div id="alerta-formulario"></div>
+
+                        <input id="submit-form-btn" type="submit" value="Registrar Libro" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg cursor-pointer transition duration-200">
+                    </form>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h3 class="text-xl font-semibold mb-6">Libros en Stock</h3>
+
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-2xl overflow-     x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Título</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Autor</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">ISBN</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Precio</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Stock</th>
+                                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="libros-tabla" class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="text-center">
+                                    <td colspan="6" class="p-4 text-gray-500 dark:text-gray-400">
+                                        Cargando o no hay libros registrados.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
