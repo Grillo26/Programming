@@ -97,6 +97,10 @@ class AdminInventario {
                 const td = document.createElement('TD');
                 td.classList.add('p-4', 'text-gray-500', 'dark:text-gray-400');
 
+                if(libro[campo] <= 5){
+                    console.log('stock poco');
+                }
+
                 if (campo === 'acciones') {
 
                     //Boton editar (más pequeño)
@@ -113,13 +117,14 @@ class AdminInventario {
                     btnEliminar.onclick = () => this.eliminar(libro.id);
 
                     const contenedorBotones = document.createElement('DIV')
-                    // usar gap y alinear en una sola linea, sin ocupar todo el ancho
+                        // usar gap y alinear en una sola linea, sin ocupar todo el ancho
                     contenedorBotones.classList.add('flex', 'items-center', 'justify-center', 'gap-2');
                     contenedorBotones.appendChild(btnEditar);
                     contenedorBotones.appendChild(btnEliminar);
 
                     td.appendChild(contenedorBotones);
-                } else {
+
+                }else {
                     td.textContent = libro[campo] ?? ''; //Por si no existe
                 }
 
@@ -199,14 +204,13 @@ function submitLibro(e) {
         return;
     }
     if (editando) { //Si editando devuelte true, porque cambiamos la variable cuando accedimos al método
-        libros.editar({ ...libroObj });
+        libros.editar({...libroObj });
         new Notificacion({
             texto: 'Editado Correctamente',
             tipo: 'Exito'
         })
-    }
-    else {
-        libros.agregar({ ...libroObj });
+    } else {
+        libros.agregar({...libroObj });
         new Notificacion({
             texto: 'Se agregó correctamente!',
             tipo: 'exito'
@@ -255,9 +259,6 @@ function valorTotalDelInventario() {
      */
     const valor = libros.libros.reduce((acumulador, libro) => {
         const valorDelLibro = parseFloat(libro.precio) * parseInt(libro.stock)
-        if (parseInt(libro.stock) === 1) {
-            notificar();
-        }
         return acumulador + valorDelLibro;
     }, 0);
 
@@ -265,6 +266,3 @@ function valorTotalDelInventario() {
     valorTotalElement.textContent = `$${valor.toFixed(2)}`;
 }
 
-function notificar() {
-    console.log('Stock al limite');
-}
