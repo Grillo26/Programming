@@ -36,7 +36,7 @@ stock.addEventListener('change', datosLibro);
 formularioLibro.addEventListener('submit', submitLibro);
 
 let editando = false;
-
+let stockBajo = false;
 
 /**
  * <============== Clases ================>
@@ -97,8 +97,9 @@ class AdminInventario {
                 const td = document.createElement('TD');
                 td.classList.add('p-4', 'text-gray-500', 'dark:text-gray-400');
 
-                if(libro[campo] <= 5){
-                    console.log('stock poco');
+                if (campo === 'stock' && Number(libro[campo]) <= 5) {
+                    td.classList.add('border', 'border-red-500');
+                    stockBajo = true;
                 }
 
                 if (campo === 'acciones') {
@@ -117,14 +118,14 @@ class AdminInventario {
                     btnEliminar.onclick = () => this.eliminar(libro.id);
 
                     const contenedorBotones = document.createElement('DIV')
-                        // usar gap y alinear en una sola linea, sin ocupar todo el ancho
+                    // usar gap y alinear en una sola linea, sin ocupar todo el ancho
                     contenedorBotones.classList.add('flex', 'items-center', 'justify-center', 'gap-2');
                     contenedorBotones.appendChild(btnEditar);
                     contenedorBotones.appendChild(btnEliminar);
 
                     td.appendChild(contenedorBotones);
 
-                }else {
+                } else {
                     td.textContent = libro[campo] ?? ''; //Por si no existe
                 }
 
@@ -204,23 +205,34 @@ function submitLibro(e) {
         return;
     }
     if (editando) { //Si editando devuelte true, porque cambiamos la variable cuando accedimos al método
-        libros.editar({...libroObj });
-        new Notificacion({
-            texto: 'Editado Correctamente',
-            tipo: 'Exito'
-        })
+        libros.editar({ ...libroObj });
+        if (stockBajo) {
+            new Notificacion({
+                texto: 'Stock Bajo',
+                tipo: 'error'
+            })
+        }
+        else {
+            new Notificacion({
+                texto: 'Editado Correctamente',
+                tipo: 'Exito'
+            })
+        }
+
     } else {
-        libros.agregar({...libroObj });
+        libros.agregar({ ...libroObj });
         new Notificacion({
             texto: 'Se agregó correctamente!',
             tipo: 'exito'
         })
+
     }
 
     formularioLibro.reset(); //Restea los inputs del formulario
     reinciarObjetoLibro();
     btnSubmit.value = 'Registrar Libro';
     editando = false;
+    stockBajo = false;
 }
 
 function reinciarObjetoLibro() {
