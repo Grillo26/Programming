@@ -92,17 +92,26 @@ class AdminInventario {
             const tr = document.createElement('TR');
             tr.classList.add('text-center');
 
+            const stockValue = parseInt(libro.stock, 10) || 0;
+            const isLow = stockValue <= 5;
+
             //Ahora se intera en el orden deseao
             campos.forEach(campo => {
                 const td = document.createElement('TD');
                 td.classList.add('p-4', 'text-gray-500', 'dark:text-gray-400');
 
-                if (campo === 'stock' && Number(libro[campo]) <= 5) {
-                    td.classList.add('border', 'border-red-500');
-                    stockBajo = true;
-                }
+                // if (campo === 'stock' && Number(libro[campo]) <= 5) {
+                //     td.classList.add('border', 'border-red-500');
+                //     stockBajo = true;
+                // }
 
-                if (campo === 'acciones') {
+                if (campo === 'stock') {
+                    td.textContent = stockValue;
+                    if (isLow) {
+                        td.classList.add('border', 'border-red-500');
+                        stockBajo = true;
+                    }
+                } else if (campo === 'acciones') {
 
                     //Boton editar (más pequeño)
                     const btnEditar = document.createElement('button');
