@@ -2,6 +2,7 @@
  *  SELECTORES
  */
 
+
 const formulario = document.querySelector('#formulario-tarea');
 const inputNombre = document.querySelector('#nombre');
 const inputDescripcion = document.querySelector('#descripcion');
@@ -50,10 +51,33 @@ class AdminProyectos {
               this.mostrarTareas();
        }
 
+       moverToProgreso(tarea) {
+              console.log(tarea)
+              Object.assign(tarea, {
+                     estado: 'progreso'
+              })
+              console.log(tarea);
+              this.mostrarTareas();
+
+       }
+
+       moverToFinalizado(tarea) {
+              Object.assign(tarea, {
+                     estado: 'finalizado'
+              })
+              this.mostrarTareas();
+       }
+
        mostrarTareas() {
 
               while (columnaPendiente.firstChild) {
                      columnaPendiente.removeChild(columnaPendiente.firstChild);
+              }
+              while (columnaProgreso.firstChild) {
+                     columnaProgreso.removeChild(columnaProgreso.firstChild);
+              }
+              while (columnaFinalizado.firstChild) {
+                     columnaFinalizado.removeChild(columnaFinalizado.firstChild);
               }
 
               console.log(this.proyectos);
@@ -79,21 +103,29 @@ class AdminProyectos {
                      const divActions = document.createElement('DIV');
                      divActions.classList.add('mt-4', 'flex', 'flex-col', 'space-y-2')
 
-                     const btnEditar = document.createElement('BUTTON');
-                     btnEditar.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-indigo-100', 'text-indigo-700', 'rounded', 'hover:bg-indigo-200', 'transition');
-                     btnEditar.textContent = '📝 Editar';
-
-                     const btnMover = document.createElement('BUTTON');
-                     btnMover.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-yellow-100', 'text-yellow-700', 'rounded', 'hover:bg-yellow-200', 'transition');
-                     btnMover.textContent = '➡️ Mover a Progreso';
-
                      const btnEliminar = document.createElement('BUTTON');
                      btnEliminar.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-red-100', 'text-red-700', 'rounded', 'hover:bg-red-200', 'transition');
                      btnEliminar.textContent = '🗑️ Eliminar';
                      btnEliminar.onclick = () => this.eliminar(tarea.id);
-
                      divActions.appendChild(btnEliminar);
-                     divActions.appendChild(btnMover);
+
+                     if (tarea.estado !== 'finalizado') {
+                            const btnMover = document.createElement('BUTTON');
+                            btnMover.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-yellow-100', 'text-yellow-700', 'rounded', 'hover:bg-yellow-200', 'transition');
+                            if (tarea.estado === 'pendiente') {
+                                   btnMover.textContent = '➡️ Mover a Progreso';
+                                   btnMover.onclick = () => this.moverToProgreso(tarea);
+                            } else {
+                                   btnMover.textContent = '➡️ Mover a Finalizado';
+                                   btnMover.onclick = () => this.moverToFinalizado(tarea);
+                            }
+
+                            divActions.appendChild(btnMover);
+                     }
+
+                     const btnEditar = document.createElement('BUTTON');
+                     btnEditar.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-indigo-100', 'text-indigo-700', 'rounded', 'hover:bg-indigo-200', 'transition');
+                     btnEditar.textContent = '📝 Editar';
                      divActions.appendChild(btnEditar);
 
                      cardTarea.appendChild(tituloTarea);
@@ -101,7 +133,9 @@ class AdminProyectos {
                      cardTarea.appendChild(divFechaLimite);
                      cardTarea.appendChild(divActions);
 
-                     columnaPendiente.appendChild(cardTarea);
+                     tarea.estado === 'pendiente' ? columnaPendiente.appendChild(cardTarea) :
+                            tarea.estado === 'progreso' ? columnaProgreso.appendChild(cardTarea) :
+                                   tarea.estado === 'finalizado' ? columnaFinalizado.appendChild(cardTarea) : console.log('error');
 
               })
 
