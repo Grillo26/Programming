@@ -62,7 +62,21 @@
                                                  class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
                                    </div>
 
-                                   <div id="alerta-formulario"></div>
+                                   <div id="alerta-formulario">
+                                          <div id="alerta-exito" class="alerta-inventario hidden w-full p-4 mb-4 rounded-lg text-sm 
+                                          bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 
+                                          font-bold text-center opacity-100 transition-opacity duration-500"
+                                                 role="alert">
+                                                 TU MENSAJE DE ÉXITO AQUÍ
+                                          </div>
+
+                                          <div id="alerta-error" class="alerta-inventario hidden w-full p-4 mb-4 rounded-lg text-sm 
+                                          bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100 
+                                          font-bold text-center opacity-100 transition-opacity duration-500"
+                                                 role="alert">
+                                                 TU MENSAJE DE ERROR AQUÍ
+                                          </div>
+                                   </div>
 
                                    <input id="submit-form-btn" type="submit" value="Crear Tarea"
                                           class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg cursor-pointer transition duration-200">

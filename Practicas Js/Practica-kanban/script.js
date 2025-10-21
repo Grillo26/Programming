@@ -23,6 +23,8 @@ const tareaObj = {
        fecha_limite: ''
 }
 
+let editando = false;
+
 /**
  *  EVENTOS
  */
@@ -51,19 +53,17 @@ class AdminProyectos {
               this.mostrarTareas();
        }
 
-       moverToProgreso(tarea) {
-              console.log(tarea)
-              Object.assign(tarea, {
-                     estado: 'progreso'
-              })
-              console.log(tarea);
+       editar(tareaActualizada) {
+              this.proyectos = this.proyectos.map(proyecto => proyecto.id === tareaActualizada.id ? tareaActualizada : proyecto);
               this.mostrarTareas();
-
        }
 
-       moverToFinalizado(tarea) {
-              Object.assign(tarea, {
-                     estado: 'finalizado'
+       cambiarEstado(id, nuevoEstado) {
+              this.proyectos = this.proyectos.map(tarea => {
+                     if (tarea.id === id) {
+                            return { ...tarea, estado: nuevoEstado }
+                     }
+                     return tarea;
               })
               this.mostrarTareas();
        }
@@ -82,8 +82,13 @@ class AdminProyectos {
 
               console.log(this.proyectos);
               this.proyectos.forEach(tarea => {
+                     let color = 'red-500';
+                     if (tarea.estado === 'progreso') color = 'yellow-500';
+                     if (tarea.estado === 'finalizado') color = 'green-500';
+
                      const cardTarea = document.createElement('DIV');
-                     cardTarea.classList.add('card-tarea', 'p-4', 'bg-white', 'dark:bg-gray-700', 'rounded-lg', 'shadow-md', 'border-l-4', 'border-red-500')
+                     cardTarea.classList.add('card-tarea', 'p-4', 'bg-white', 'dark:bg-gray-700', 'rounded-lg', 'shadow-md', 'border-l-4')
+                     cardTarea.classList.add(`border-${color}`);
 
                      const tituloTarea = document.createElement('H4');
                      tituloTarea.classList.add('text-lg', 'font-semibold', 'mb-1', 'text-gray-900', 'dark:text-gray-100');
@@ -96,7 +101,7 @@ class AdminProyectos {
                      const divFechaLimite = document.createElement('DIV');
                      divFechaLimite.classList.add('flex', 'justify-between', 'items-center', 'text-xs', 'mt-3', 'pt-3', 'border-t', 'border-gray-100', 'dark:border-gray-600')
                      divFechaLimite.innerHTML = `<span class="font-medium text-gray-500 dark:text-gray-300">
-                                                        Límite: <span class="text-red-500">${tarea.fecha_limite}</span>
+                                                        Límite: <span class="text-${color}">${tarea.fecha_limite}</span>
                                                  </span>
                      `;
 
@@ -114,10 +119,10 @@ class AdminProyectos {
                             btnMover.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-yellow-100', 'text-yellow-700', 'rounded', 'hover:bg-yellow-200', 'transition');
                             if (tarea.estado === 'pendiente') {
                                    btnMover.textContent = '➡️ Mover a Progreso';
-                                   btnMover.onclick = () => this.moverToProgreso(tarea);
+                                   btnMover.onclick = () => this.cambiarEstado(tarea.id, 'progreso');
                             } else {
                                    btnMover.textContent = '➡️ Mover a Finalizado';
-                                   btnMover.onclick = () => this.moverToFinalizado(tarea);
+                                   btnMover.onclick = () => this.cambiarEstado(tarea.id, 'finalizado');
                             }
 
                             divActions.appendChild(btnMover);
@@ -126,6 +131,9 @@ class AdminProyectos {
                      const btnEditar = document.createElement('BUTTON');
                      btnEditar.classList.add('text-xs', 'py-1.5', 'px-3', 'bg-indigo-100', 'text-indigo-700', 'rounded', 'hover:bg-indigo-200', 'transition');
                      btnEditar.textContent = '📝 Editar';
+                     // const clone = structuredClone(tarea);
+                     const tareaACargar = { ...tarea }; //Clonacion superficial
+                     btnEditar.onclick = () => cargarEdicion(tareaACargar);
                      divActions.appendChild(btnEditar);
 
                      cardTarea.appendChild(tituloTarea);
@@ -133,15 +141,44 @@ class AdminProyectos {
                      cardTarea.appendChild(divFechaLimite);
                      cardTarea.appendChild(divActions);
 
-                     tarea.estado === 'pendiente' ? columnaPendiente.appendChild(cardTarea) :
-                            tarea.estado === 'progreso' ? columnaProgreso.appendChild(cardTarea) :
-                                   tarea.estado === 'finalizado' ? columnaFinalizado.appendChild(cardTarea) : console.log('error');
+                     if (tarea.estado === 'pendiente') {
+                            columnaPendiente.appendChild(cardTarea);
+                     } else if (tarea.estado === 'progreso') {
+                            columnaProgreso.appendChild(cardTarea);
+                     } else if (tarea.estado === 'finalizado') {
+                            columnaFinalizado.appendChild(cardTarea);
+                     }
 
               })
 
        }
 }
 
+class Notificacion {
+       constructor({ texto, tipo }) {
+              this.texto = texto;
+              this.tipo = tipo;
+
+              this.mostrar();
+       }
+
+       mostrar() {
+
+              const alertaExito = document.querySelector('#alerta-exito');
+              const alertaError = document.querySelector('#alerta-error');
+
+              this.tipo === 'exito'
+                     ? (alertaExito.classList.remove('hidden'), alertaExito.textContent = this.texto)
+                     : (alertaError.classList.remove('hidden'), alertaError.textContent = this.texto)
+
+              setTimeout(() => {
+                     alertaExito.classList.add('hidden');
+                     alertaError.classList.add('hidden');
+              }, 3000)
+
+       }
+
+}
 /**
  *  FUNCIONES
  */
@@ -164,13 +201,30 @@ function submitTarea(e) {
 
 
        if (Object.values(tareaObj).some(valor => valor.trim() === '')) {
-              console.log('Hay elementos vacios');
+              new Notificacion({
+                     texto: 'Campos Vacíos',
+                     tipo: 'error'
+              })
+              return;
        }
-       formulario.reset();
-       proyectos.agregar({ ...tareaObj });
+       if (editando) {
+              proyectos.editar({ ...tareaObj });
+              new Notificacion({
+                     texto: 'Editado Correctamente',
+                     tipo: 'exito'
+              })
+       } else { //Aquí se agrega 
+              proyectos.agregar({ ...tareaObj });
+              new Notificacion({
+                     texto: 'Agregado Correctamente',
+                     tipo: 'exito'
+              });
+       }
 
+       formulario.reset();
        reinciarObjectoTarea();
-       return;
+       btnSubmit.value = 'Crear Tarea';
+       editando = false;
 
 }
 
@@ -183,4 +237,19 @@ function reinciarObjectoTarea() {
               estado: 'pendiente',
               fecha_limite: ''
        })
+}
+
+function cargarEdicion(tarea) {
+       Object.assign(tareaObj, tarea); //en tarea llega lo que le pasamos desde el boton y lo asigna a tareaObj, y en el input editamos todo
+
+       inputNombre.value = tarea.nombre;
+       estado = tarea.estado;
+       inputDescripcion.value = tarea.descripcion;
+       fechaLimite.value = tarea.fecha_limite;
+       btnSubmit.value = tarea;
+
+       editando = true;
+
+       btnSubmit.value = 'Actualizar';
+
 }
